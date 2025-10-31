@@ -12,8 +12,8 @@ async function Images(){
   console.log(images);
   return(
       <div className="flex flex-wrap gap-4">
-        {[...images, ...images, ...images, ...images].map((image, index) => (
-          <div key={image.id + "-" + index} className="flex flex-col w-48 ">
+        {images.map((image) => (
+          <div key={image.id} className="flex flex-col w-48 ">
             <img src={image.url} alt="image" />
             <div className="flex justify-normal">{image.name}</div>
           </div>
