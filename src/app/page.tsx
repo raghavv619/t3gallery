@@ -1,13 +1,12 @@
 import { desc } from "drizzle-orm";
 import { db } from "~/server/db/index"
 import { SignedOut, SignedIn } from "@clerk/nextjs";
+import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
 
-async function Images(){
-  const images = await db.query.images.findMany({
-    orderBy: (model, {desc}) => desc(model.id)
-  })
+async function Images() {
+const images = await getMyImages();
 
   console.log(images);
   return(
