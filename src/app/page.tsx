@@ -1,5 +1,4 @@
-import { desc } from "drizzle-orm";
-import { db } from "~/server/db/index"
+import Image  from "next/image"
 import { SignedOut, SignedIn } from "@clerk/nextjs";
 import { getMyImages } from "~/server/queries";
 
@@ -12,8 +11,9 @@ const images = await getMyImages();
   return(
       <div className="flex flex-wrap gap-4">
         {images.map((image) => (
-          <div key={image.id} className="flex flex-col w-48 ">
-            <img src={image.url} alt="image" />
+          <div key={image.id} className="flex justify-center flex-col w-48 h-48">
+            <Image src={image.url} alt={image.name} style={{objectFit:"contain"}}width={192}
+            height={192}/>
             <div className="flex justify-normal">{image.name}</div>
           </div>
         ))}
