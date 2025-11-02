@@ -8,5 +8,5 @@ export default async function PhotoModal({
     const { id: photoId } = await params;
     const idAsNum = Number(photoId);
     const image = await getImage(idAsNum);
-    return <div><img src={image.url} alt={photoId} className="w-112" /></div>
+    return <div><img src={image.url} alt={photoId} className="w-96" /></div>
 }
