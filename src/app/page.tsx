@@ -2,6 +2,7 @@ import Image  from "next/image"
 import { SignedOut, SignedIn } from "@clerk/nextjs";
 import { getMyImages } from "~/server/queries";
 import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
 
 export const dynamic = "force-dynamic";
 
@@ -26,12 +27,17 @@ const images = await getMyImages();
 }
 
 export default async function HomePage() {
+  const user = await auth();
+    if (!user.userId) {
+    return (
+      <main className="">
+        <div className="w-full h-full text-2xl text-center">Please Sign In!</div>
+      </main>
+    );
+  }
+
   return (
     <main className="">
-      <SignedOut>
-        <div className="w-full h-full text-2xl text-center">Please Sign In!
-        </div>
-      </SignedOut>
       <SignedIn>
         <Images />
       </SignedIn>
