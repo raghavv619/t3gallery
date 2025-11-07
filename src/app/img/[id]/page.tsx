@@ -9,5 +9,5 @@ export default async function PhotoPage({
     const { id: photoId } = await params;
     const idAsNum = Number(photoId);
     // const image = await getImage(idAsNum);
-    return <FullPageImageView id={idAsNum}/>
+    return <FullPageImageView photoId={photoId}/>
 }

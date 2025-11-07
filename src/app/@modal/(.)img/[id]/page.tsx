@@ -10,6 +10,6 @@ export default async function PhotoModal({
     const { id: photoId } = await params;
     const idAsNum = Number(photoId);
     return <Modal>
-        <FullPageImageView id={idAsNum} />
+        <FullPageImageView photoId={photoId} />
         </Modal>
 }
